@@ -1,0 +1,13 @@
+DEPENDENCIES
+  core
+    path: .
+    metadata: true
+  minitest-handler
+
+GRAPH
+  chef_handler (1.1.6)
+  core (0.1.0)
+    freebsd (>= 0.0.0)
+  freebsd (0.1.4)
+  minitest-handler (1.2.0)
+    chef_handler (>= 0.0.0)

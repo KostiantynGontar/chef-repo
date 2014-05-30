@@ -1,0 +1,30 @@
+---
+driver:
+  name: vagrant
+  driver_config:
+  require_chef_omnibus: true
+  use_vagrant_berkshelf_plugin: true
+  network: 
+    - ["public_network", { bridge: "br0"}]
+  customize:
+    memory: 2048
+    cpus: 1
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: freebsd-9.2
+    driver_config:
+      box: freebsd-9.2
+      box_url: http://files.wunki.org/freebsd-9.2-amd64-wunki.box
+  - name: debian-7.4
+
+suites:
+  - name: default
+    run_list:
+    - recipe[ci]
+    - recipe[minitest-handler]
+    attributes:
+    excludes:
+    - freebsd-9.2
